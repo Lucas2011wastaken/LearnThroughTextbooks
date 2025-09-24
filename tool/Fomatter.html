@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>空格替换工具</title>
+    <style>
+        .container {
+            margin: 20px;
+        }
+        textarea {
+            margin: 10px 0;
+            font-family: monospace;
+        }
+        button {
+            padding: 5px 15px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h3>输入文本：</h3>
+        <textarea id="input" rows="5" cols="50" placeholder="在此粘贴需要处理的文本..."></textarea>
+        
+        <div>
+            <button onclick="processText()">替换空格</button>
+            <button onclick="copyOutput()">复制结果</button>
+        </div>
+
+        <h3>处理结果：</h3>
+        <textarea id="output" rows="5" cols="50" readonly></textarea>
+    </div>
+
+    <script>
+        function processText() {
+            const inputText = document.getElementById('input').value;
+            
+            // 处理流程：
+            // 1. 合并所有空白字符（包括换行）
+            // 2. 替换为\blank 
+            // 3. 去除末尾多余的\blank 
+            const replacedText = inputText
+                .replace(/\r?\n/g,'')
+                .replace(/\s+/g, '\\blank ')
+
+            document.getElementById('output').value = replacedText;
+        }
+
+        function copyOutput() {
+            const output = document.getElementById('output');
+            output.select();
+            try {
+                navigator.clipboard.writeText(output.value);
+            } catch (err) {
+                alert('复制失败，请手动选择文本复制');
+            }
+        }
+    </script>
+</body>
+</html>
