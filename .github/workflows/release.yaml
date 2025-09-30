@@ -22,17 +22,19 @@ jobs:
 
     - name: List Release Releasing Files
       run: |
-        for file in "$PDF_LIST"; do
+        # 临时将 IFS 设置为管道符 | ，并使用 echo 将列表送入 read -r
+        echo "${{env.PDF_LIST}}" | while IFS='|' read -r file; do
+          # 必须用双引号引用 $file
           ls "${{github.workspace}}/$file"
         done
 
     - name: Generate file table for release body
       id: generate_file_table
       run: |
-        # 临时将 IFS 设置为管道符 | ，并使用 echo 将列表送入 read -r
+        tables=""
         echo "${{env.PDF_LIST}}" | while IFS='|' read -r file; do
-          # 必须用双引号引用 $file
-          ls "${{github.workspace}}/$file"
+          filename=$(basename "$file")
+          tables+="- $filename\n  - 大小：\n  - 页数：\n  - 题数：\n"
         done
         echo "file_tables<<EOF" >> $GITHUB_OUTPUT
         echo -e "$tables" >> $GITHUB_OUTPUT
