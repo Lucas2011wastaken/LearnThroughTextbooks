@@ -23,7 +23,7 @@ jobs:
 
     - name: List Release Releasing Files
       run: |
-        for file in $PDF_LIST; do
+        for file in "$PDF_LIST"; do
           ls "${{github.workspace}}/$file"
         done
 
