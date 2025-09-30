@@ -13,8 +13,7 @@ jobs:
       contents: write
     env:
       PDF_LIST: |
-        "opt3/选必三过教材 参考答案.pdf"
-
+        opt3/选必三过教材 参考答案.pdf
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -32,7 +31,7 @@ jobs:
       id: generate_file_table
       run: |
         tables=""
-        for file in $PDF_LIST; do
+        for file in "$PDF_LIST"; do
           filename=$(basename "$file")
           tables+="- $filename\n  - 大小：\n  - 页数：\n  - 题数：\n"
         done
