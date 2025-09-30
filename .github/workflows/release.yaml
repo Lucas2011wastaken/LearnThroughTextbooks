@@ -50,5 +50,5 @@ jobs:
 
           ### 文件详情
           ${{ steps.generate_file_table.outputs.file_tables }}
-      draft: true
-      files: ${{env.PDF_LIST}}
+        draft: true
+        files: ${{env.PDF_LIST}}
