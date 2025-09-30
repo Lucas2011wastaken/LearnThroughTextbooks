@@ -13,7 +13,7 @@ jobs:
       contents: write
     env:
       PDF_LIST: |
-        opt3/选必三过教材 参考答案.pdf
+        "opt3/选必三过教材 参考答案.pdf"
 
     steps:
     - name: Checkout code
