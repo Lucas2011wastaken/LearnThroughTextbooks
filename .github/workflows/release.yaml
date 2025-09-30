@@ -11,8 +11,6 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-    env:
-      PDF_LIST: "opt3/选必三过教材 参考答案.pdf"
     steps:
     - name: Checkout code
       uses: actions/checkout@v4
@@ -22,23 +20,7 @@ jobs:
 
     - name: List Release Releasing Files
       run: |
-        # 临时将 IFS 设置为管道符 | ，并使用 echo 将列表送入 read -r
-        echo "${{env.PDF_LIST}}" | while IFS='|' read -r file; do
-          # 必须用双引号引用 $file
-          ls "${{github.workspace}}/$file"
-        done
-
-    - name: Generate file table for release body
-      id: generate_file_table
-      run: |
-        tables=""
-        echo "${{env.PDF_LIST}}" | while IFS='|' read -r file; do
-          filename=$(basename "$file")
-          tables+="- $filename\n  - 大小：\n  - 页数：\n  - 题数：\n"
-        done
-        echo "file_tables<<EOF" >> $GITHUB_OUTPUT
-        echo -e "$tables" >> $GITHUB_OUTPUT
-        echo "EOF" >> $GITHUB_OUTPUT
+          ls "${{github.workspace}}/opt3/选必三过教材 参考答案.pdf"
 
     - name: Create Release
       uses: softprops/action-gh-release@v1
@@ -49,6 +31,9 @@ jobs:
           基于标签 ${{ github.ref_name }} 的发布。
 
           ### 文件详情
-          ${{ steps.generate_file_table.outputs.file_tables }}
+          - 选必三过教材 参考答案.pdf
+            - 页数：
+            - 题数：
+            - 字数：
         draft: true
-        files: ${{env.PDF_LIST}}
+        files: "${{github.workspace}}/opt3/选必三过教材 参考答案.pdf"
