@@ -1,0 +1,54 @@
+name: Release on Tag Push
+
+on:
+  push:
+    tags:
+      - '*'
+
+jobs:
+  release:
+    name: Extract and Release PDF File on tag push 
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    env:
+      PDF_LIST: |
+        opt3/选必三过教材 参考答案.pdf
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+        ref: ${{ github.ref }}
+
+    - name: List Release Releasing Files
+      run: |
+        for file in $PDF_LIST; do
+          ls "${{github.workspace}}/$file"
+        done
+
+    - name: Generate file table for release body
+      id: generate_file_table
+      run: |
+        tables=""
+        for file in $PDF_LIST; do
+          filename=$(basename "$file")
+          tables+="- $filename\n  - 大小：\n  - 页数：\n  - 题数：\n"
+        done
+        echo "file_tables<<EOF" >> $GITHUB_OUTPUT
+        echo -e "$tables" >> $GITHUB_OUTPUT
+        echo "EOF" >> $GITHUB_OUTPUT
+
+    - name: Create Release
+      uses: softprops/action-gh-release@v1
+      with:
+        tag_name: ${{ github.ref_name }}
+        name: ${{ github.ref_name }}
+        body: |
+          基于标签 ${{ github.ref_name }} 的发布。
+
+          ### 文件详情
+          ${{ steps.generate_file_table.outputs.file_tables }}
+      draft: true
+      files: ${{env.PDF_LIST}}
