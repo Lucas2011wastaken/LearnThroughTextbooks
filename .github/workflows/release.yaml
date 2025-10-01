@@ -36,4 +36,4 @@ jobs:
             - 题数：
             - 字数：
         draft: true
-        files: "${{github.workspace}}/opt3/选必三过教材 参考答案.pdf"
+        files: "${{github.workspace}}/opt3/选必三过教材 参考答案.pdf#opt3.pdf"

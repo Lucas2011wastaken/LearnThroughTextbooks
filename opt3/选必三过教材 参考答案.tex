@@ -28,6 +28,7 @@
 \newcommand{\circled}[1]{{\small{\textcircled{\tiny{#1}}}}}% 圈圈数字
 \newcommand{\Romannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}% 大写罗马数字
 \newcommand{\chdots}{…\hspace{-0.15em}…}% 中文省略号调教
+\newcommand{\sep}{\hspace{0.5em}\ensuremath{\Vert}\hspace{0.5em}}% 分隔符
 
 \theoremstyle{definition}
 \newtheorem{exercise}{}
@@ -925,12 +926,12 @@
 \begin{subexercise}
     \fs{[2024甘肃卷]}温室气体$\ce{N2O}$在催化剂作用下可分解为$\ce{O2}$和$\ce{N2}$，也可作为氧化剂氧化苯制苯酚，下列说法错误的是\quad(\quad)
     \begin{adjustwidth}{4em}{}
-            \begin{asparaenum}[A. ]
-                \item 原子半径：O<N<C
-                \item 第一电离能：C<N<O 
-                \item 在水中的溶解度：苯<苯酚
-                \item 苯和苯酚中C的杂化方式相同
-            \end{asparaenum}
+        \begin{asparaenum}[A. ]
+            \item 原子半径：O<N<C
+            \item 第一电离能：C<N<O
+            \item 在水中的溶解度：苯<苯酚
+            \item 苯和苯酚中C的杂化方式相同
+        \end{asparaenum}
     \end{adjustwidth}
     \begin{answer}
         B
@@ -943,36 +944,109 @@
     \end{explanation}
 \end{subexercise}
 \begin{subexercise}
-        阅读并完成62页实验3-5，实验现象为\blank ，化学方程式为\blank 是否所有酚类物质均可用氯化铁检验\blank 为什么酸性过强的溶液要先中和，再加氯化铁溶液检验\blank 苯酚可以用于制造酚醛树脂，反应方程式为\blank 苯酚可用于外用消毒是因为\blank 。化工厂和炼焦厂的废水中常含有酚类物质，在排放前须\blank ，可以选用\blank 作试剂。
-        \begin{answer}
-            \begin{inparaenum}[\quad\textsuperscript{\arabic{enumi}}]
-                \item[\setcounter{enumi}{1}\textsuperscript{\arabic{enumi}}] 由橙红色变为灰绿色
-                \item $\ce{3CH3CH2OH + K2Cr2O7 + 4H2SO4 -> 3CH3CHO + K2SO4 + Cr2(SO4)3 + 7H2O}$、$\ce{3CH3CH2OH + 2K2Cr2O7 + 8H2SO4 -> 3CH3COOH + 2K2SO4 + 2Cr2(SO4)3 + 11H2O}$
-                \item 不是，要与$\ce{Fe^3+}$发生显色反应，分子中必须存在能与$\ce{Fe^3+}$发生作用的电子体系，通常是具有共轭结构的烯醇式结构，如2,4,6-三叔丁基苯酚就因空间位阻无法形成有效的配位，因此通常不显色。
-                \item 因为酚类发生配位的有效物质主要是$\ce{PhO-}$，而不是$\ce{PhOH}$，若酸性过强，前者在溶液中的浓度较低，不易发生明显的配位（显色）反应。\vspace{0.5em}\\
-                \item $\chemfig{[,0.5] *6(-=-=(-OH)-=)} \ce{+ HCHO ->T[$\ce{H+}$][$\triangle$] }\chemfig{[,0.4]*6(-=-(-CH_2OH)=(-OH)-=)}$、$\chemfig{[,0.4]*6(-=-(-CH_2OH)=(-OH)-=)}\ce{->T[$\ce{H+}$][$\triangle$] (n-1) H2O +}\chemfig{[,0.4] *6(-=-(-CH_2-[@{right,0.5}:0,0.8]OH)=(-OH)-(-[@{left,0.5}:180,0.8]H)=) }\polymerdelim[delimiters={[]},height=15pt, depth=15pt, h align=false, indice=n]{left}{right}$ \\
-                \item 使微生物的蛋白质变性或凝固、破坏细胞膜/细胞壁、抑制特定酶系统
-                \item 进行处理以降解或去除酚
-                \item 氧化剂（如臭氧、氯气、过氧化氢等）或特种微生物（活性污泥法）
-            \end{inparaenum}
-        \end{answer}
+    阅读并完成62页实验3-5，实验现象为\blank ，化学方程式为\blank 是否所有酚类物质均可用氯化铁检验\blank 为什么酸性过强的溶液要先中和，再加氯化铁溶液检验\blank 苯酚可以用于制造酚醛树脂，反应方程式为\blank 苯酚可用于外用消毒是因为\blank 。化工厂和炼焦厂的废水中常含有酚类物质，在排放前须\blank ，可以选用\blank 作试剂。
+    \begin{answer}
+        \begin{inparaenum}[\quad\textsuperscript{\arabic{enumi}}]
+            \item[\setcounter{enumi}{1}\textsuperscript{\arabic{enumi}}] 由橙红色变为灰绿色
+            \item $\ce{3CH3CH2OH + K2Cr2O7 + 4H2SO4 -> 3CH3CHO + K2SO4 + Cr2(SO4)3 + 7H2O}$、$\ce{3CH3CH2OH + 2K2Cr2O7 + 8H2SO4 -> 3CH3COOH + 2K2SO4 + 2Cr2(SO4)3 + 11H2O}$
+            \item 不是，要与$\ce{Fe^3+}$发生显色反应，分子中必须存在能与$\ce{Fe^3+}$发生作用的电子体系，通常是具有共轭结构的烯醇式结构，如2,4,6-三叔丁基苯酚就因空间位阻无法形成有效的配位，因此通常不显色。
+            \item 因为酚类发生配位的有效物质主要是$\ce{PhO-}$，而不是$\ce{PhOH}$，若酸性过强，前者在溶液中的浓度较低，不易发生明显的配位（显色）反应。\vspace{0.5em}\\
+            \item $\chemfig{[,0.5] *6(-=-=(-OH)-=)} \ce{+ HCHO ->T[$\ce{H+}$][$\triangle$] }\chemfig{[,0.4]*6(-=-(-CH_2OH)=(-OH)-=)}$、$\chemfig{[,0.4]*6(-=-(-CH_2OH)=(-OH)-=)}\ce{->T[$\ce{H+}$][$\triangle$] (n-1) H2O +}\chemfig{[,0.4] *6(-=-(-CH_2-[@{right,0.5}:0,0.8]OH)=(-OH)-(-[@{left,0.5}:180,0.8]H)=) }\polymerdelim[delimiters={[]},height=15pt, depth=15pt, h align=false, indice=n]{left}{right}$ \\
+            \item 使微生物的蛋白质变性或凝固、破坏细胞膜/细胞壁、抑制特定酶系统
+            \item 进行处理以降解或去除酚
+            \item 氧化剂（如臭氧、氯气、过氧化氢等）或特种微生物（活性污泥法）
+        \end{inparaenum}
+    \end{answer}
 \end{subexercise}
 \begin{exercise}
-        \begin{multicols}{2}
-\noindent 完67页第1题（醇和酚区别）\\
-完成67页第2题（苯酚显酸性的原因）\\
-完成67页第3题（分子内基团相互影响）\\
-完成67页第4题（醇的性质）\\
-完成67页5题（分子间氢键对醇的熔沸点和溶解度影响）\\
-完成67页第6题（常见有机物相互转化关系）\\
-完成67页第7题（苯酚和铁离子配位作用）\\
-完成67页第8题（设计对种方案鉴别苯和苯酚）\\
-完成67页第9题（通过计算进行有机物推断）\\
-完成67页第10题（六元环状有机物合成路线）
+    \begin{multicols}{2}
+        \noindent 完67页第1题（醇和酚区别）\\
+        完成67页第2题（苯酚显酸性的原因）\\
+        完成67页第3题（分子内基团相互影响）\\
+        完成67页第4题（醇的性质）\\
+        完成67页5题（分子间氢键对醇的熔沸点和溶解度影响）\\
+        完成67页第6题（常见有机物相互转化关系）\\
+        完成67页第7题（苯酚和铁离子配位作用）\\
+        完成67页第8题（设计对种方案鉴别苯和苯酚）\\
+        完成67页第9题（通过计算进行有机物推断）\\
+        完成67页第10题（六元环状有机物合成路线）
     \end{multicols}
     \begin{answer}
         \fs{略}
     \end{answer}
 \end{exercise}
+
+\begin{exercise}
+
+    乙醛的化学式\blank 、结构式\blank 、结构简式\blank 、键线式\blank 乙醛是无色有\blank 气味的液体，密度比水\blank ，\blank 挥发、\blank 燃烧，能与水、乙醇\blank 。乙醛加氢还原（或加成）的反应方程式：\blank 乙醛和氢氰酸加成反应的方程式\blank 从结构角度解释该反应的发生过程\blank 阅读并完成69页实验3-7，实验现象有\blank ，\blank ，\blank ，化学方程式为\blank 、\blank 、\blank 硝酸银和氨水的顺序能否调换\blank 加到恰好沉淀溶解的原因是\blank 阅读并完成69页实验3-8，实验现象有\blank ，化学方程式为\blank 、\blank 氢氧化钠要大大的过量是因为\blank 氢氧化铜悬浊液必须新制是因为\blank 两个实验结论总结：\blank 乙醛也能在一定温度和催化剂作用下被空气氧化，方程式为\blank 醛的通性主要有\blank 甲醛又叫\blank ，有强烈\blank 气味的气体，易溶于水，水溶液\blank 具有杀菌和防腐蚀性能，可用于\blank 和\blank 。苯甲醛俗称\blank ，是制造染料、香料及药物的重要原料。丙醛制丙酸、1-丙醇，2-丙醇的反应方程式\blank 肉桂醛的官能团名称为\blank ，可发生的反应类型为\blank ，苯甲醛和乙醛如何制备肉桂醛\blank 丙酮的结构式为\blank ，官能团名称为\blank ，和丙醛是否同分异构体\blank 和丙醛的化学性质相同点为\blank ，不同点为\blank 怎样鉴别丙酮和丙醛\blank 丙酮易挥发、与水和乙醇互溶是因为\blank 酮是重要的有机溶剂和化工原料，丙酮可以作为化学纤维、钢瓶储存乙炔的溶剂，还可用于生产\blank 。
+    \begin{answer}
+        \begin{inparaenum}[\quad\textsuperscript{\arabic{enumi}}]
+            \item[\setcounter{enumi}{1}\textsuperscript{\arabic{enumi}}] $\ce{C2H4O}$
+            \item $\chemfig{[,0.6] C(-[2]H)(-[4]H)(-[6]H)-C(=[2]O)-H}$
+            \item $\ce{CH3CHO}$
+            \item $\chemfig{[,0.5] -[:30]-CHO}$
+            \item 刺激性
+            \item 小
+            \item 易
+            \item 易
+            \item 互溶
+            \item $\ce{CH3CHO + H2 ->T[催化剂][$\triangle$] CH3CH2OH}$
+            \item $\ce{CH3CHO + HCN ->T[催化剂]}\mathop{\chemfig{[,0.6] CH_3-CH(-[2]OH)-CN}}\limits_{\mbox{\kaishu 2-羟基丙腈}}$\vspace{0.5em}
+            \item 乙醛中的$\ce{C=O}$结构中氧原子的电负性远大于碳原子，导致碳原子带部分正电荷（$\delta^+$），成为亲电中心，易受亲核试剂氟化氢的$\ce{CN-}$攻击从而发生上述反应
+            \item 先产生白色沉淀
+            \item 后沉淀溶解
+            \item 洁净的试管内壁上形成一层光亮如镜的银层\\
+            \item $\ce{Ag+ + NH3.H2O = AgOH v + NH4^+}$
+            \item $\ce{AgOH + 2 NH3.H2O <=> [Ag(NH3)2]+ + OH- + 2H2O }$
+            \item $\ce{2[Ag(NH3)2]+ + R-CHO + 2OH- ->T[$\triangle$] 2Ag v + R-COO- + 3NH3 + NH4+ + H2O}$
+            \item 不能，若交换则无法控制银离子与氨水的相对含量
+            \item 保证配离子（$\ce{[Ag(NH3)2]+}$）浓度
+            \item 产生砖红色沉淀
+            \item $\ce{Cu^2+ + 2OH- = Cu(OH)2 v}$
+            \item $\ce{ R-CHO + 2Cu(OH)2 + OH- ->T[$\triangle$] R-COO- + Cu2O v + 3H2O }$
+            \item 提供强碱环境，防止氢氧化铜沉淀析出，稳定氧化亚铜，确保出现典型的实验现象
+            \item 防止氢氧化亚铜沉淀的干扰，确保反应灵敏度和现象明确
+            \item 醛基可以被弱氧化剂氧化为酸
+            \item $\ce{2CH3CHO + O2 ->T[催化剂][$\triangle$] 2CH3COOH}$
+            \item 还原性、氧化性、亲核加成、
+            \item 蚁醛
+            \item 刺激性
+            \item 福尔马林
+            \item 消毒
+            \item 制作生物标本
+            \item 苦杏仁油
+            \item $\ce{2 CH3CH2CHO + O2 -> 2 CH3CH2COOH} \sep \ce{CH3CH2CHO + H2 -> CH3CH2CH2OH} $ \sep $\ce{CH3CH2CHO + CH3MgI -> CH3CH2CH(OMgI)CH3}$、$\ce{CH3CH2CH(OMgI)CH3 + H2O -> CH3CH2CH(OH)CH3 + Mg(OH)I}$
+            \item 碳碳双键、醛基
+            \item 加成反应、氧化反应、还原反应、取代反应\vspace{0.5em}\\
+            \item $\chemfig{[:-30,0.4]*6(-=-(-CHO)=-=)}\ce{+ H-CH2CHO -> }\chemfig{[:-30,0.4]*6(-=-(-CH(-[2,0.6]OH)(-[,0.6]CH_2CHO))=-=)}$、$\chemfig{[:-30,0.4]*6(-=-(-CH(-[2,0.6]OH)(-[,0.6]CH_2CHO))=-=)}\ce{-> H2O + }\chemfig{[:-30,0.4]*6(-=-(-CH(=[,0.6]CHCHO))=-=)}$
+            \item $\chemfig{[,0.6] CH_3-C(=[2]O)-CH_3}$
+            \item 羰基
+            \item 是
+            \item 均易发生亲核加成、均能发生还原反应等
+            \item 醛能被氧化成酸，而酮不行；丙醛可在常温/低温下容易聚合为三聚丙醛，酮不行
+            \item 用弱氧化剂，如斐林试剂等
+            \item 丙酮分子之间主要依靠较弱的范德华力和偶极-偶极相互作用，它不能形成分子间氢键，所以易挥发\sep 丙酮分子能作为氢键受体与水分子和乙醇形成氢键，易于溶解
+            \item 有机玻璃、农药和涂料等
+        \end{inparaenum}
+    \end{answer}
+\end{exercise}
+\setcounter{subexercise}{0}
+\addtocounter{exercise}{1}
+\begin{subexercise}
+    \begin{multicols}{2}
+\noindent 完72页第1题（碳碳双键和醛基的性质）\\
+完成72页第2题（还原反应特征）\\
+完成72页第3题（醇的氧化特点、同分异构体判断）\\\textbf{二氢醛一氢酮无氢不氧化}\\
+完成72页第4题（含醛基的同分异构体书写）\\
+完成72页5题（有机推断）\\
+完成72页第6题（有机物鉴别）\\
+完成72页第7题（丙醛的化学性质）\\
+完成72页第8题（溴水可以氧化醛基变为羧酸）\\
+完成72页第9题（羟醛缩合反应历程，先加成后消去）
+        \end{multicols}
+    \begin{answer}
+        \fs{略}
+    \end{answer}
+\end{subexercise}
 
 \end{document}
