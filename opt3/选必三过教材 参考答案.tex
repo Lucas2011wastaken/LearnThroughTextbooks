@@ -13,6 +13,7 @@
 \usepackage{multicol}
 \usepackage{graphicx}
 \usepackage{polyglossia}
+\usepackage{etoolbox}
 \usepackage{extarrows}
 \setotherlanguages{russian}
 \newfontfamily\russianfont{Times New Roman}
@@ -23,13 +24,17 @@
 \date{\textcolor{white}{\today}\vspace{-3em}}
 \pagestyle{plain}
 
-\newcommand{\blank}{ \underbar{\quad$\blacktriangle$\quad} }% 空格样式
+\newcommand{\blank}{ \underbar{\quad\addtocounter{blanks}{1}\textsuperscript{\arabic{blanks}}$\blacktriangle$\quad} }% 空格样式
 \newcommand{\fs}[1]{{\fangsong #1}}% 使用仿宋
 \newcommand{\hei}[1]{{\heiti #1}}% 使用黑体
 \newcommand{\circled}[1]{{\small{\textcircled{\tiny{#1}}}}}% 圈圈数字
 \newcommand{\Romannumeral}[1]{\uppercase\expandafter{\romannumeral#1}}% 大写罗马数字
 \newcommand{\chdots}{…\hspace{-0.15em}…}% 中文省略号调教
 \newcommand{\sep}{\hspace{0.5em}\ensuremath{\Vert}\hspace{0.5em}}% 分隔符
+
+\newcounter{blanks}% 为空格编号所定义的计数器
+\AtBeginEnvironment{subexercise}{\setcounter{blanks}{0}}
+\AtBeginEnvironment{exercise}{\setcounter{blanks}{0}}
 
 \theoremstyle{definition}
 \newtheorem{exercise}{}
@@ -1237,7 +1242,7 @@
         \chemfig{[,0.4] (=[2]O)(-[:210]*6(-=-=-=))-[:-30](-[6]OH)-[:30]*6(-=-=-=)}\ce{->T[$\ce{FeCl3}$][$\triangle$]\chemfig{[,0.4] (=[2]O)(-[:210]*6(-=-=-=))-[:-30](=[6]O)-[:30]*6(-=-=-=)}}
     \]
     相关信息列表如下：
-    \begin{table}[!ht]
+    \begin{table}[!h]
         \centering
         \begin{tabular}{|l|l|l|l|l|}
             \hline
@@ -1247,15 +1252,16 @@
             冰乙酸   & 无色液体  & 17           & 118          & 与水、乙醇互溶          \\ \hline
         \end{tabular}
     \end{table}
+        装置示意图如左图所示，实验步骤为：\circled{1}在圆底烧瓶中加入10mL冰乙酸、5mL水及9.0g $\ce{FeCl3 . 6H2O}$，边搅拌边加热，至固体全部溶解。\circled{2}停止加热，待沸腾平息后加入2.0g安息香，加热回流45$\sim$60min。\circled{3}加入50mL水，煮沸后冷却，有黄色固体析出。\circled{4}过滤，并用冷水洗涤固体3次，得到粗品。\circled{5}粗品用75\%的乙醇重结晶，干燥后得淡黄色结晶1.6g。
+
+    \newpage
+
     \begin{flushright}
-        \begin{figure}[h!]
+        \begin{figure}[ht!]
             \flushright
             \includegraphics[width=0.12\textwidth]{assists/image15.png}
         \end{figure}
-    \end{flushright}\vspace{-14em}
-    \begin{adjustwidth}{}{0.13\textwidth}
-        装置示意图如左图所示，实验步骤为：\circled{1}在圆底烧瓶中加入10mL冰乙酸、5mL水及9.0g $\ce{FeCl3 . 6H2O}$，边搅拌边加热，至固体全部溶解。\circled{2}停止加热，待沸腾平息后加入2.0g安息香，加热回流45$\sim$60min。\circled{3}加入50mL水，煮沸后冷却，有黄色固体析出。\circled{4}过滤，并用冷水洗涤固体3次，得到粗品。\circled{5}粗品用75\%的乙醇重结晶，干燥后得淡黄色结晶1.6g。
-    \end{adjustwidth}
+    \end{flushright}\vspace{-12em}
 
     (1)仪器A中应加入\blank(填“水”或“油”)作为热传导介质。
     \begin{answer}
@@ -1382,5 +1388,24 @@
         \end{inparaenum}
     \end{answer}
 \end{exercise}
+\begin{exercise}
+    阅读并完成99页实验有机物常见官能团检验，完成实验中的表格填写。实验目的为\blank 实验仪器为\blank 实验试剂为\blank 完成表格填写。常见官能团检验方法总结如下：碳碳双键：\blank 碳卤键：\blank 酚羟基：\blank 醛基：\blank 乙醇、1-己烯、苯、四氯化碳鉴别方法：\blank 1-丙醇、2-氯丙烷、丙醛、苯酚鉴别方法：\blank 加入石蕊想象为\blank ，结论是\blank 加入碳酸氢钠的目的是\blank ，不加会怎样？\blank 加氯化铁现象为\blank ，结论是\blank 问题与讨论答案：\blank 
+    \begin{answer}
+        \begin{inparaenum}[\quad\textsuperscript{\arabic{enumi}}]
+            \item[\setcounter{enumi}{1}\textsuperscript{\arabic{enumi}}] example
+            \item example
+        \end{inparaenum}
+    \end{answer}
+    \begin{point}
+        point
+    \end{point}
+    \begin{method}
+        method
+    \end{method}
+    \begin{explanation}
+        explanation
+    \end{explanation}
+\end{exercise}
+
 
 \end{document}
